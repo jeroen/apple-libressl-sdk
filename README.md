@@ -21,9 +21,9 @@ As [noted in the Apple readme](https://github.com/apple-oss-distributions/curl/b
 PATH="/bin:/usr/bin/:/usr/local/bin:/usr/sbin"
 git clone https://github.com/jeroen/apple-libressl-sdk
 SDKFILES="$PWD/apple-libressl-sdk"
-curl -OL https://curl.se/download/curl-8.14.0.tar.gz
-tar xf curl-8.14.0.tar.gz
-cd curl-8.14.0
+curl -OL https://curl.se/download/curl-8.14.1.tar.gz
+tar xf curl-8.14.1.tar.gz
+cd curl-8.14.1
 ./configure --enable-threaded-resolver --with-gssapi --with-ssl=$SDKFILES --with-nghttp2=$SDKFILES --with-secure-transport --without-libpsl --disable-shared
 make
 # make install
@@ -49,7 +49,7 @@ otool -L ./src/curl
 #   /usr/lib/libSystem.B.dylib (compatibility version 1.0.0, current version 1351.0.0)
 ```
 
-## How these were made
+## Sources
 
 The headers were simply downloaded from upstream sources:
 
@@ -64,4 +64,4 @@ tapi stubify --filetype=tbd-v4 libcrypto.dylib
 tapi stubify --filetype=tbd-v4 libssl.dylib
 ```
 
-And afterwards manually the `install-name` and `targets` were manually modified with a text editor.
+And afterwards the `install-name` and `targets` were manually modified with a text editor.
